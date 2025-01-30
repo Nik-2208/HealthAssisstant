@@ -23,17 +23,13 @@
                 <button type="submit">Log Meal</button>
             </form>
 
-            <!-- Display logged meals -->
-            {% if meals %}
-                <h3>Logged Meals</h3>
-                <ul>
-                    {% for meal in meals %}
-                        <li>{{ meal }}</li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No meals logged yet.</p>
-            {% endif %}
+            <!-- Static message instead of dynamic content -->
+            <h3>Logged Meals</h3>
+            <ul>
+                <li>Breakfast: Oats with fruits</li>
+                <li>Lunch: Chicken Salad</li>
+                <li>Dinner: Grilled Salmon</li>
+            </ul>
         </div>
 
         <div class="tracker-card">
@@ -44,17 +40,13 @@
                 <button type="submit">Log Exercise</button>
             </form>
 
-            <!-- Display logged exercises -->
-            {% if exercises %}
-                <h3>Logged Exercises</h3>
-                <ul>
-                    {% for exercise in exercises %}
-                        <li>{{ exercise }}</li>
-                    {% endfor %}
-                </ul>
-            {% else %}
-                <p>No exercises logged yet.</p>
-            {% endif %}
+            <!-- Static message instead of dynamic content -->
+            <h3>Logged Exercises</h3>
+            <ul>
+                <li>Morning Run - 30 minutes</li>
+                <li>Yoga - 20 minutes</li>
+                <li>Strength Training - 40 minutes</li>
+            </ul>
         </div>
     </section>
     <footer>
