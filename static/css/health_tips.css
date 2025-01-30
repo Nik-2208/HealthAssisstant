@@ -1,0 +1,167 @@
+/* General Body Styling */
+body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #1a1c20, #121212); /* Dark gradient */
+    color: #e0e0e0; /* Softer white for text */
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+/* Header Section */
+header {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #3a3d40, #212427); /* Darker gradient for header */
+    color: #fff;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+    border-bottom: 5px solid #61dafb; /* Accent color */
+    animation: fadeIn 1s ease-out;
+}
+
+header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 3px 6px 12px rgba(0, 0, 0, 0.6);
+}
+
+header p {
+    font-size: 1.5rem;
+    opacity: 0.8;
+    margin-top: 10px;
+    animation: slideIn 1.2s ease-out;
+}
+
+/* Tips Section */
+.tips {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding: 60px 20px;
+}
+
+.tips article {
+    background: linear-gradient(135deg, #2a2d34, #3e4147); /* Subtle 3D gradient */
+    color: #fff;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.6), inset 0 1px 5px rgba(255, 255, 255, 0.1);
+    text-align: center;
+    transition: transform 0.5s ease, box-shadow 0.5s ease;
+    overflow: hidden;
+    position: relative;
+}
+
+.tips article:hover {
+    transform: scale(1.1) translateY(-10px);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.9), inset 0 2px 10px rgba(255, 255, 255, 0.2);
+}
+
+.tips article h2 {
+    font-size: 2rem;
+    margin-bottom: 15px;
+    background: linear-gradient(135deg, #ff9e44, #ffd89b); /* Accent gradient for heading */
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.5);
+    animation: glow 2s infinite alternate;
+}
+
+.tips article p {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+}
+
+/* Add floating particle effect */
+.tips article::before {
+    content: '';
+    position: absolute;
+    top: -100%;
+    left: -100%;
+    width: 300%;
+    height: 300%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 10%, transparent 80%);
+    animation: rotate 10s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.tips article:hover::before {
+    animation: rotate 5s linear infinite;
+}
+
+/* Footer Section */
+footer {
+    text-align: center;
+    padding: 30px;
+    background: linear-gradient(135deg, #1a1c20, #0e0e10); /* Darker footer gradient */
+    color: #888;
+    box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.7);
+}
+
+footer p {
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #ffd89b, 0 0 20px #ff9e44;
+    }
+    to {
+        text-shadow: 0 0 20px #ff9e44, 0 0 30px #ffd89b;
+    }
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 2.5rem;
+    }
+
+    .tips {
+        padding: 40px 10px;
+        gap: 20px;
+    }
+
+    .tips article {
+        padding: 20px;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+    }
+}

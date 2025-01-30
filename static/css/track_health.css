@@ -1,0 +1,95 @@
+body.track-health {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: linear-gradient(135deg, #000428, #004e92); /* Dark gradient */
+    color: #E0E0E0;
+    overflow-x: hidden;
+}
+
+header {
+    text-align: center;
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #16222A, #3A6073); /* Gradient */
+    color: #E0E0E0;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+}
+
+header h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 3px 5px 15px rgba(0, 0, 0, 0.8);
+}
+
+header p {
+    font-size: 1.3rem;
+    opacity: 0.9;
+}
+
+/* Tracking Section */
+#tracking {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: 60px 20px;
+    gap: 30px;
+}
+
+.tracker-card {
+    background: linear-gradient(135deg, #232526, #414345); /* Darker card background */
+    color: #E0E0E0;
+    width: 350px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.tracker-card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);
+}
+
+.tracker-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+.tracker-card p {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.tracker-card input[type="text"] {
+    width: 90%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    background: #2C5364;
+    color: #E0E0E0;
+}
+
+.tracker-card button {
+    background: linear-gradient(135deg, #F7971E, #FFD200);
+    color: #141E30;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tracker-card button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 10px 30px rgba(255, 215, 0, 0.5);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: #000428;
+    color: #AAA;
+}

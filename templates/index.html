@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Welcome to Your Own Health Assistant</h1>
+        <p>Your health journey, redefined with advanced tracking and tips.</p>
+    </header>
+    <section id="features">
+        <div class="container">
+            <div class="feature-card">
+                <h2>Track Your Health</h2>
+                <p>Log your meals and exercises to monitor your progress.</p>
+                <a class="btn" href="/track_health">Get Started</a>
+            </div>
+            <div class="feature-card">
+                <h2>Health Tips</h2>
+                <p>Discover tips to improve your well-being and fitness.</p>
+                <a class="btn" href="/health_tips">Explore Tips</a>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Health Assistant. All rights reserved.</p>
+    </footer>
+
+    <!-- Chatbot Integration -->
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2024/12/21/08/20241221082530-AEYMJJ86.js"></script>
+</body>
+</html>

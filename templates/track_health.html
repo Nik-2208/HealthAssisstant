@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Track Your Health</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/track_health.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body class="track-health">
+    <header>
+        <h1>Track Your Health</h1>
+        <p>Log your meals, exercises, and well-being to stay on top of your goals.</p>
+    </header>
+    <section id="tracking">
+        <div class="tracker-card">
+            <h2>Track Your Meals</h2>
+            <p>Log your meals and calculate your daily nutritional intake.</p>
+            <form method="POST" action="/track_health">
+                <input type="text" name="meal_details" placeholder="Enter meal details" required>
+                <button type="submit">Log Meal</button>
+            </form>
+
+            <!-- Display logged meals -->
+            {% if meals %}
+                <h3>Logged Meals</h3>
+                <ul>
+                    {% for meal in meals %}
+                        <li>{{ meal }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No meals logged yet.</p>
+            {% endif %}
+        </div>
+
+        <div class="tracker-card">
+            <h2>Track Your Exercises</h2>
+            <p>Record your workouts and monitor your fitness goals.</p>
+            <form method="POST" action="/track_health">
+                <input type="text" name="exercise_details" placeholder="Enter exercise details" required>
+                <button type="submit">Log Exercise</button>
+            </form>
+
+            <!-- Display logged exercises -->
+            {% if exercises %}
+                <h3>Logged Exercises</h3>
+                <ul>
+                    {% for exercise in exercises %}
+                        <li>{{ exercise }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No exercises logged yet.</p>
+            {% endif %}
+        </div>
+    </section>
+    <footer>
+        <p>&copy; 2025 Health Assistant. All rights reserved.</p>
+    </footer>
+
+    <!-- Chatbot Integration -->
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2024/12/21/08/20241221082530-AEYMJJ86.js"></script>
+</body>
+</html>
