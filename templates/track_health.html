@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Track Your Health</title>
 
-    <!-- Correct CSS link for GitHub Pages -->
+    <!-- Correct link to the CSS file -->
     <link rel="stylesheet" href="/static/css/track_health.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -23,13 +23,17 @@
                 <button type="submit">Log Meal</button>
             </form>
 
-            <!-- Static message instead of dynamic content -->
-            <h3>Logged Meals</h3>
-            <ul>
-                <li>Breakfast: Oats with fruits</li>
-                <li>Lunch: Chicken Salad</li>
-                <li>Dinner: Grilled Salmon</li>
-            </ul>
+            <!-- Display logged meals -->
+            {% if meals %}
+                <h3>Logged Meals</h3>
+                <ul>
+                    {% for meal in meals %}
+                        <li>{{ meal }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No meals logged yet.</p>
+            {% endif %}
         </div>
 
         <div class="tracker-card">
@@ -40,13 +44,17 @@
                 <button type="submit">Log Exercise</button>
             </form>
 
-            <!-- Static message instead of dynamic content -->
-            <h3>Logged Exercises</h3>
-            <ul>
-                <li>Morning Run - 30 minutes</li>
-                <li>Yoga - 20 minutes</li>
-                <li>Strength Training - 40 minutes</li>
-            </ul>
+            <!-- Display logged exercises -->
+            {% if exercises %}
+                <h3>Logged Exercises</h3>
+                <ul>
+                    {% for exercise in exercises %}
+                        <li>{{ exercise }}</li>
+                    {% endfor %}
+                </ul>
+            {% else %}
+                <p>No exercises logged yet.</p>
+            {% endif %}
         </div>
     </section>
     <footer>
