@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Tips</title>
+
+    <!-- Fixed Flask static path -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/health_tips.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<header>
+    <h1>Health Tips</h1>
+    <p>Discover tips to improve your well-being and fitness.</p>
+</header>
+
+<section class="tips">
+    {% if tips %}
+        {% for tip in tips %}
+        <article>
+            <h2>{{ tip.title }}</h2>
+            <p>{{ tip.description }}</p>
+        </article>
+        {% endfor %}
+    {% else %}
+        <p>No tips available yet.</p>
+    {% endif %}
+</section>
+
+<footer>
+    <p>&copy; 2025 Health Assistant. All rights reserved.</p>
+</footer>
+
+<!-- Chatbot -->
+<script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2024/12/21/08/20241221082530-AEYMJJ86.js"></script>
+
+</body>
+</html>
