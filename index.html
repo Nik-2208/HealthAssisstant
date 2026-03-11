@@ -6,9 +6,35 @@
     <title>Health Assistant</title>
     <link rel="stylesheet" href="static/css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .nav-links {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            color: #E0E0E0;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.1);
+            transition: background 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+    </style>
 </head>
 <body>
     <header>
+        <div class="nav-links">
+            <a href="track_health.html">Track Health</a>
+            <a href="health_tips.html">Health Tips</a>
+        </div>
         <h1>Welcome to Your Health Assistant</h1>
         <p>Your health journey, redefined with advanced tracking and tips.</p>
     </header>
@@ -17,7 +43,7 @@
         <div class="container">
             <div class="feature-card">
                 <h2>Track Your Health</h2>
-                <p>Log your meals and exercises to monitor your progress.</p>
+                <p>Log your meals, exercises, water, weight, and sleep to monitor your progress.</p>
                 <a class="btn" href="track_health.html">Get Started</a>
             </div>
             <div class="feature-card">

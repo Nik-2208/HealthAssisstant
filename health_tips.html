@@ -6,28 +6,62 @@
     <title>Health Tips</title>
     <link rel="stylesheet" href="static/css/health_tips.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .nav-links {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+        
+        .nav-links a {
+            color: #E0E0E0;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.1);
+            transition: background 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+    </style>
 </head>
 <body>
     <header>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="track_health.html">Track Health</a>
+        </div>
         <h1>Health Tips & Benefits</h1>
         <p>Improve your well-being with actionable tips for a healthy lifestyle.</p>
     </header>
     <div class="tips">
         <article>
             <h2>Stay Hydrated</h2>
-            <p>Drinking enough water is essential for maintaining your energy levels and overall health. Aim for at least 8 glasses of water a day.</p>
+            <p>Drinking enough water is essential for maintaining your energy levels and overall health. Aim for at least 8 glasses of water a day. Proper hydration helps with digestion, circulation, and even mood regulation.</p>
         </article>
         <article>
             <h2>Regular Exercise</h2>
-            <p>Incorporate at least 30 minutes of moderate exercise into your daily routine to improve cardiovascular health and reduce stress.</p>
+            <p>Incorporate at least 30 minutes of moderate exercise into your daily routine to improve cardiovascular health and reduce stress. Activities like walking, cycling, or swimming can make a significant difference in your overall fitness.</p>
         </article>
         <article>
             <h2>Balanced Diet</h2>
-            <p>Eat a variety of nutrient-dense foods, including fruits, vegetables, whole grains, and lean proteins. Avoid processed and sugary foods.</p>
+            <p>Eat a variety of nutrient-dense foods, including fruits, vegetables, whole grains, and lean proteins. Avoid processed and sugary foods. A balanced diet provides essential vitamins and minerals for optimal body function.</p>
         </article>
         <article>
             <h2>Get Enough Sleep</h2>
-            <p>Sleep is crucial for recovery and overall health. Adults should aim for 7-9 hours of quality sleep each night.</p>
+            <p>Sleep is crucial for recovery and overall health. Adults should aim for 7-9 hours of quality sleep each night. Good sleep hygiene includes maintaining a consistent sleep schedule and limiting screen time before bed.</p>
+        </article>
+        <article>
+            <h2>Manage Stress</h2>
+            <p>Chronic stress can negatively impact your health. Practice stress-management techniques like meditation, deep breathing, or yoga. Taking regular breaks and engaging in hobbies can also help reduce stress levels.</p>
+        </article>
+        <article>
+            <h2>Regular Health Check-ups</h2>
+            <p>Schedule regular check-ups with your healthcare provider for early detection of potential health issues. Preventive care is key to maintaining long-term health and catching problems before they become serious.</p>
         </article>
     </div>
     <footer>

@@ -6,52 +6,463 @@
     <title>Track Your Health</title>
     <link rel="stylesheet" href="static/css/track_health.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        .nav-links {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+            z-index: 100;
+        }
+        
+        .nav-links a {
+            color: #E0E0E0;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            background: rgba(255,255,255,0.1);
+            transition: background 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        /* Additional styles for enhanced tracking */
+        .stats-summary {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            padding: 20px;
+            background: linear-gradient(135deg, #1a1c20, #2d3238);
+            margin: 20px;
+            border-radius: 15px;
+        }
+        
+        .stat-card {
+            background: linear-gradient(135deg, #3a3d40, #4a4d50);
+            padding: 15px 20px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            min-width: 100px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        
+        .stat-icon {
+            font-size: 1.5rem;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #F7971E, #FFD200);
+            border-radius: 50%;
+            color: #141E30;
+            font-weight: bold;
+        }
+        
+        .stat-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-value {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #FFD200;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #AAA;
+        }
+        
+        .tracker-card {
+            background: linear-gradient(135deg, #232526, #414345);
+            color: #E0E0E0;
+            width: 320px;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            margin: 15px;
+        }
+        
+        .tracker-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.9);
+        }
+        
+        .tracker-card h2 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: #FFD200;
+        }
+        
+        .tracker-card p {
+            font-size: 1rem;
+            margin-bottom: 15px;
+            color: #CCC;
+        }
+        
+        .tracker-card input[type="text"],
+        .tracker-card input[type="number"] {
+            width: 85%;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            margin-bottom: 12px;
+            background: #2C5364;
+            color: #E0E0E0;
+            font-size: 1rem;
+        }
+        
+        .tracker-card input::placeholder {
+            color: #AAA;
+        }
+        
+        .tracker-card button {
+            background: linear-gradient(135deg, #F7971E, #FFD200);
+            color: #141E30;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            margin: 5px;
+        }
+        
+        .tracker-card button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+        }
+        
+        .tracker-card h3 {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #F7971E;
+            border-bottom: 2px solid #F7971E;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+        }
+        
+        .tracker-card ul {
+            list-style: none;
+            padding: 0;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+        
+        .tracker-card ul li {
+            padding: 10px;
+            margin: 5px 0;
+            background: rgba(255,255,255,0.05);
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .meal-info, .exercise-info {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1;
+        }
+        
+        .meal-info strong, .exercise-info strong {
+            font-size: 1rem;
+        }
+        
+        .calories, .duration {
+            font-size: 0.85rem;
+            color: #F7971E;
+            margin-top: 3px;
+        }
+        
+        .timestamp {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 3px;
+        }
+        
+        .delete-btn {
+            background: #e74c3c !important;
+            color: white !important;
+            padding: 5px 12px !important;
+            font-size: 0.9rem !important;
+            min-width: auto !important;
+        }
+        
+        .delete-btn:hover {
+            background: #c0392b !important;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4) !important;
+        }
+        
+        .empty-message {
+            color: #888;
+            font-style: italic;
+            text-align: center;
+        }
+        
+        .water-summary {
+            background: linear-gradient(135deg, #2980b9, #3498db) !important;
+        }
+        
+        .water-count {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: center;
+        }
+        
+        .glass-icon {
+            font-size: 1.5rem;
+        }
+        
+        .count {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        
+        .bmi-card {
+            background: linear-gradient(135deg, #1a1c20, #2d3238) !important;
+        }
+        
+        .bmi-result {
+            padding: 20px;
+        }
+        
+        .bmi-value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .bmi-category {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
+        .bmi-placeholder {
+            color: #888;
+            font-style: italic;
+        }
+        
+        .bmi-input-group {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .bmi-input-group input {
+            width: 100px !important;
+        }
+        
+        .clear-data-btn {
+            background: linear-gradient(135deg, #e74c3c, #c0392b) !important;
+            margin-top: 20px;
+        }
+        
+        /* Water quick add buttons */
+        .water-buttons {
+            display: flex;
+            gap: 8px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+        .water-btn {
+            padding: 8px 15px !important;
+            font-size: 0.9rem !important;
+            min-width: 50px !important;
+        }
+        
+        @media (max-width: 768px) {
+            .stats-summary {
+                padding: 15px;
+            }
+            
+            .stat-card {
+                min-width: 80px;
+                padding: 10px 15px;
+            }
+            
+            .tracker-card {
+                width: 90%;
+                margin: 10px auto;
+            }
+        }
+    </style>
 </head>
 
 <body class="track-health">
 
 <header>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="health_tips.html">Health Tips</a>
+    </div>
     <h1>Track Your Health</h1>
-    <p>Log your meals, exercises, and well-being to stay on top of your goals.</p>
+    <p>Log your meals, exercises, water, weight, and sleep to stay on top of your goals.</p>
 </header>
+
+<!-- Stats Summary -->
+<div id="statsSummary" class="stats-summary">
+    <div class="stat-card">
+        <span class="stat-icon">M</span>
+        <div class="stat-info">
+            <span class="stat-value">0</span>
+            <span class="stat-label">Meals</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <span class="stat-icon">C</span>
+        <div class="stat-info">
+            <span class="stat-value">0</span>
+            <span class="stat-label">Calories</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <span class="stat-icon">W</span>
+        <div class="stat-info">
+            <span class="stat-value">0/8</span>
+            <span class="stat-label">Water</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <span class="stat-icon">E</span>
+        <div class="stat-info">
+            <span class="stat-value">0</span>
+            <span class="stat-label">Exercises</span>
+        </div>
+    </div>
+    <div class="stat-card">
+        <span class="stat-icon">S</span>
+        <div class="stat-info">
+            <span class="stat-value">0h</span>
+            <span class="stat-label">Sleep Avg</span>
+        </div>
+    </div>
+</div>
 
 <section id="tracking">
 
+    <!-- Meal Tracking -->
     <div class="tracker-card">
         <h2>Track Your Meals</h2>
         <p>Log your meals and calculate your daily nutritional intake.</p>
 
         <div>
-            <input type="text" id="mealInput" placeholder="Enter meal details">
+            <input type="text" id="mealInput" placeholder="Enter meal (e.g., Breakfast - Oatmeal)">
+            <input type="number" id="caloriesInput" placeholder="Calories">
             <button onclick="addMeal()">Log Meal</button>
         </div>
 
         <h3>Logged Meals</h3>
         <ul id="mealsList">
-            <li>No meals logged yet.</li>
+            <li class="empty-message">No meals logged yet.</li>
         </ul>
     </div>
 
-
+    <!-- Exercise Tracking -->
     <div class="tracker-card">
         <h2>Track Your Exercises</h2>
         <p>Record your workouts and monitor your fitness goals.</p>
 
         <div>
-            <input type="text" id="exerciseInput" placeholder="Enter exercise details">
+            <input type="text" id="exerciseInput" placeholder="Enter exercise (e.g., Running)">
+            <input type="number" id="durationInput" placeholder="Duration (minutes)">
             <button onclick="addExercise()">Log Exercise</button>
         </div>
 
         <h3>Logged Exercises</h3>
         <ul id="exercisesList">
-            <li>No exercises logged yet.</li>
+            <li class="empty-message">No exercises logged yet.</li>
         </ul>
+    </div>
+
+    <!-- Water Tracking -->
+    <div class="tracker-card">
+        <h2>Water Intake</h2>
+        <p>Track your daily water consumption.</p>
+
+        <div>
+            <input type="number" id="waterInput" placeholder="Glasses" value="1" min="1" max="10">
+            <button onclick="addWater()">Add Water</button>
+        </div>
+        
+        <div class="water-buttons">
+            <button class="water-btn" onclick="document.getElementById('waterInput').value='1'; addWater();">+1</button>
+            <button class="water-btn" onclick="document.getElementById('waterInput').value='2'; addWater();">+2</button>
+            <button class="water-btn" onclick="document.getElementById('waterInput').value='3'; addWater();">+3</button>
+        </div>
+
+        <h3>Water Today</h3>
+        <ul id="waterList">
+            <li class="empty-message">No water logged yet.</li>
+        </ul>
+    </div>
+
+    <!-- Weight Tracking -->
+    <div class="tracker-card">
+        <h2>Weight Tracker</h2>
+        <p>Monitor your weight over time.</p>
+
+        <div>
+            <input type="number" id="weightInput" placeholder="Weight (kg)" step="0.1">
+            <button onclick="addWeight()">Log Weight</button>
+        </div>
+
+        <h3>Weight History</h3>
+        <ul id="weightList">
+            <li class="empty-message">No weight logged yet.</li>
+        </ul>
+    </div>
+
+    <!-- Sleep Tracking -->
+    <div class="tracker-card">
+        <h2>Sleep Tracker</h2>
+        <p>Record your sleep hours and quality.</p>
+
+        <div>
+            <input type="number" id="sleepInput" placeholder="Hours slept" step="0.5">
+            <button onclick="addSleep()">Log Sleep</button>
+        </div>
+
+        <h3>Sleep History</h3>
+        <ul id="sleepList">
+            <li class="empty-message">No sleep logged yet.</li>
+        </ul>
+    </div>
+
+    <!-- BMI Calculator -->
+    <div class="tracker-card bmi-card">
+        <h2>BMI Calculator</h2>
+        <p>Check your Body Mass Index.</p>
+
+        <div class="bmi-input-group">
+            <input type="number" id="heightInput" placeholder="Height (cm)" onchange="calculateBMI()" onkeyup="calculateBMI()">
+        </div>
+
+        <div id="bmiResult" class="bmi-result">
+            <p class="bmi-placeholder">Enter height and log weight to calculate BMI</p>
+        </div>
     </div>
 
 </section>
 
 <footer>
     <p>&copy; 2025 Health Assistant. All rights reserved.</p>
+    <button class="clear-data-btn" onclick="clearAllData()" style="margin-top: 10px; background: #e74c3c; color: white; padding: 10px 20px; border: none; border-radius: 20px; cursor: pointer;">Clear All Data</button>
 </footer>
 
 <script src="static/js/tracker.js"></script>
